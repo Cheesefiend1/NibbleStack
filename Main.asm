@@ -1,5 +1,6 @@
 _init_:
     ld SP, 8004h
+    ld BC, 8000h
     jp, poll_loop
     
 poll_loop:
@@ -12,10 +13,10 @@ poll_loop:
     jp nz, poll_loop
     
 shift_intobytes:
-    RLC A
-    RLC A
-    RLC A
-    RLC A; shift the instruction 4 bits
+    RLCA
+    RLCA
+    RLCA
+    RLCA; shift the instruction 4 bits
     or e
     ld e, a; preps for stack pushing :3
     ld a, 01h
@@ -28,7 +29,8 @@ shift_intobytes:
 
 stack_pusher:
     PUSH DE
+    jp, poll_loop
 
-run_func: 
+ORG 0066h 
     jp, 8004h ; jumps to execute code written
     
