@@ -22,7 +22,7 @@ shift_intobytes:
     cp d
     jp z, stack_pusher
     jp s, stack_pusher; just in case it overflows :D
-    
+    ld d, e; finishes off the logic for this part.
     jp nz, poll_loop
 
 
