@@ -1,5 +1,5 @@
 _init_:
-    ld SP, 7FFFh
+    ld SP, FFFFh
     ld BC, 8000h
     jp, poll_loop
     
